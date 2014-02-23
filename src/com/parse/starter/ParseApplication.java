@@ -7,7 +7,6 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import android.app.Application;
-
 public class ParseApplication extends Application {
 
 	@Override
@@ -31,9 +30,6 @@ public class ParseApplication extends Application {
 		testObject.put("foo", "bar");
 		testObject.saveInBackground();
 		
-		ParseObject testObject1 = new ParseObject("TestObject");
-		testObject.put("foo1", "bar1");
-		testObject.saveInBackground();		
 	}
 
 }
