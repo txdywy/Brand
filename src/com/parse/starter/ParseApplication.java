@@ -26,10 +26,14 @@ public class ParseApplication extends Application {
 		
 		ParseACL.setDefaultACL(defaultACL, true);
 		
-		
+		// Test
 		ParseObject testObject = new ParseObject("TestObject");
 		testObject.put("foo", "bar");
 		testObject.saveInBackground();
+		
+		ParseObject testObject1 = new ParseObject("TestObject");
+		testObject.put("foo1", "bar1");
+		testObject.saveInBackground();		
 	}
 
 }
