@@ -45,7 +45,7 @@ public class ParseStarterProjectActivity extends Activity {
 
         /* 关闭当前的Activity */
         //MainActivity.this.finish();
-    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Product");
+    	ParseQuery<ParseObject> query = ParseQuery.getQuery("data");
     	EditText e = (EditText)findViewById(R.id.editText1);    	
     	String input_brand = e.getText().toString();
     	try{
@@ -55,16 +55,23 @@ public class ParseStarterProjectActivity extends Activity {
 	    	    	TextView t = (TextView)findViewById(R.id.textView1);
 	    	        if (e == null) {
 	    	            Log.d("product", "Retrieved " + productList.size() + " products");
-	    	            ParseObject p = productList.get(0);
-	    	    		t.setText(p.getString("description"));	
-	    	    		
-	    	    		final ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-	    				imageLoader.loadDrawable(p.getString("brandLogoUrl"), new com.parse.starter.AsyncImageLoader.ImageCallback() {
-
-	    					public void imageLoaded(Drawable imageDrawable, String imageUrl) {
-	    						imageView.setImageDrawable(imageDrawable);
-	    					}
-	    				});
+	    	            
+	    	            try{
+		    	            ParseObject p = productList.get(0);
+		    	    		t.setText(p.getString("companyName") + '\n' + p.getString("brandName")+ '\n' + p.getString("lastCategory")+ '\n' + p.getString("provinceCnName"));	
+		    	    		
+		    	    		final ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+		    	    		String url = p.getString("newBrandLogoUrl");
+		    	    		if (url != null){
+			    				imageLoader.loadDrawable(url, new com.parse.starter.AsyncImageLoader.ImageCallback() {
+		
+			    					public void imageLoaded(Drawable imageDrawable, String imageUrl) {
+			    						imageView.setImageDrawable(imageDrawable);
+			    					}
+			    				});
+		    	    		}
+	    	            }
+		    	    	catch (Exception e1) {}
 	    	    		
 	    	    		
 	    	        } else {
