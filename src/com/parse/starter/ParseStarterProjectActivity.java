@@ -47,12 +47,14 @@ public class ParseStarterProjectActivity extends Activity {
         /* 关闭当前的Activity */
         //MainActivity.this.finish();
     	// 一号店数据data
-    	/*
-    	ParseQuery<ParseObject> query = ParseQuery.getQuery("data");
+    	
+    	ParseQuery<ParseObject> query = ParseQuery.getQuery("yhd_data");
     	EditText e = (EditText)findViewById(R.id.editText1);    	
     	String input_brand = e.getText().toString();
     	try{
+    		Log.d("product", input_brand);
 	    	query.whereContains("brandName", input_brand);
+	    	query.setLimit(3);
 	    	query.findInBackground(new FindCallback<ParseObject>() {
 	    	    public void done(List<ParseObject> productList, ParseException e) {
 	    	    	TextView t = (TextView)findViewById(R.id.textView1);
@@ -86,7 +88,7 @@ public class ParseStarterProjectActivity extends Activity {
 	    } catch (Exception e1) {
 		
 	    }
-	    */
+	    /*
     	//京东数据
     	ParseQuery<ParseObject> query = ParseQuery.getQuery("jd_data");
     	EditText e = (EditText)findViewById(R.id.editText1);    	
@@ -132,6 +134,7 @@ public class ParseStarterProjectActivity extends Activity {
 	    } catch (Exception e1) {
 		
 	    }
+	    */
 
     }
 }
